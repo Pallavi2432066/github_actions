@@ -1,0 +1,47 @@
+name: Workflow 8 Jobs
+ 
+on:
+  push:
+    branches: [ main ]
+ 
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Preparing workspace..."
+ 
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Dependencies installed"
+ 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Linting OK ✅"
+ 
+  test-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Unit tests passed ✅"
+ 
+  test-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1  # ❌ End-to-End test failed
+ 
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Docker image built ✅"
+ 
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deployed to staging ✅"
+ 
+  deploy-production:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1  # ❌ Final deployment failed
+ 
