@@ -1,0 +1,27 @@
+ name: Workflow 4 Jobs All Success
+ 
+on:
+  push:
+    branches: [ main ]
+ 
+jobs:
+  job1-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Setup successful ✅"
+ 
+  job2-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tests OK ✅"
+ 
+  job3-build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build successful ✅"
+ 
+  job4-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deployment successful 🚀"
+ 
