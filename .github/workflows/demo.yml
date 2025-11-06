@@ -24,8 +24,8 @@ jobs:
       - name: Run linter
         run: |
           echo "Linting code..."
-          sleep 5
-          echo "Lint passed "
+          sleep 3
+          echo "Lint passed ✅"
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -34,8 +34,8 @@ jobs:
       - name: Run unit tests
         run: |
           echo "Running unit tests..."
-          sleep 5
-          echo "All tests passed "
+          sleep 3
+          echo "All tests passed ✅"
 
   integration-tests:
     runs-on: ubuntu-latest
@@ -44,8 +44,8 @@ jobs:
       - name: Run integration tests
         run: |
           echo "Running integration tests..."
-          sleep 5
-          echo "Tests failed "
+          sleep 3
+          echo "Tests failed ❌"
           exit 1
 
   build:
@@ -55,8 +55,8 @@ jobs:
       - name: Build project
         run: |
           echo "Building project..."
-          sleep 3
-          echo "Build successful "
+          sleep 2
+          echo "Build successful ✅"
 
   deploy:
     runs-on: ubuntu-latest
@@ -65,8 +65,8 @@ jobs:
       - name: Deploy to staging
         run: |
           echo "Deploying to staging..."
-          sleep 4
-          echo "Deployment failed "
+          sleep 2
+          echo "Deployment failed ❌"
           exit 1
 
   notify:
@@ -77,5 +77,5 @@ jobs:
       - name: Notify team
         run: |
           echo "Sending Slack notification..."
-          sleep 2
-          echo "Notification sent "
+          sleep 1
+          echo "Notification sent ✅"
