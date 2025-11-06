@@ -1,0 +1,42 @@
+name: sample workflow
+ 
+on:
+  push:
+    branches: [ main ]
+ 
+jobs:
+  job1-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+ 
+  job2-install-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Installing dependencies..."
+  
+  job3-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Linting
+        run: exit 1  # ❌ Simulate failure
+ 
+  job4-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: echo "Tests completed successfully ✅"
+ 
+  job5-security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Security Scan
+        run: exit 1  # ❌ Simulate failed security scan
+ 
+  job6-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Project
+        run: echo "Build successful 🎉"
+ 
