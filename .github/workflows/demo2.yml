@@ -1,0 +1,26 @@
+name: Matrix Test Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16, 18, 20]
+    steps:
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Run tests on Node.js ${{ matrix.node }}
+        run: |
+          echo "Testing on Node.js ${{ matrix.node }}..."
+          sleep 2
+          if [ "${{ matrix.node }}" == "18" ]; then
+            echo "Simulating failure on Node.js 18"
+            exit 1
+          fi
+          echo "Tests passed on Node.js ${{ matrix.node }}"
