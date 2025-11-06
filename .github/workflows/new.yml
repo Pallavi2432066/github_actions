@@ -1,0 +1,41 @@
+name: new
+ 
+on:
+  workflow_dispatch:
+ 
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Setup complete"
+ 
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Dependencies installed"
+ 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Linting OK ✅"
+ 
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1  # ❌ Type check failed
+ 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All tests passed ✅"
+ 
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1  # ❌ Packaging failed
+ 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Build success ✅"
+ 
