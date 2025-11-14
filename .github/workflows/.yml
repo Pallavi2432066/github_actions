@@ -1,0 +1,33 @@
+name: Nightly and manual CI
+
+on:
+  workflow_dispatch:           # manual trigger from Actions tab
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: false
+        default: 'staging'
+  schedule:                    # runs at 03:00 UTC every day
+    - cron: '0 3 * * *'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test --if-present
+
+      - name: Print environment (if provided)
+        run: echo "Environment=${{ github.event.inputs.environment || 'none' }}"
